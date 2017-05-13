@@ -185,15 +185,51 @@ namespace s3d
 			: center(bottomRight->x - _r, bottomRight->y - _r)
 			, r(_r) {}
 
+		/// <summary>
+		/// 直径の端を指定して円を作成します。
+		/// </summary>
+		/// <param name="p0">
+		/// 円周上の点
+		/// </param>
+		/// <param name="p1">
+		/// <paramref name="p0"> と対象な位置にある円周上の点
+		/// </param>
 		Circle(const position_type& p0, const position_type& p1) noexcept
 			: center((p0 + p1) / 2.0)
 			, r(p0.distanceFrom(p1) / 2.0) {}
 
+		/// <summary>
+		/// 円周上の三点を指定して円を作成します。
+		/// </summary>
+		/// <param name="p0">
+		/// 円周上の点
+		/// </param>
+		/// <param name="p1">
+		/// 円周上の点
+		/// </param>
+		/// <param name="p2">
+		/// 円周上の点
+		/// </param>
 		Circle(const position_type& p0, const position_type& p1, const position_type& p2) noexcept;
 
+		/// <summary>
+		/// 直径を指定して円を作成します。
+		/// </summary>
+		/// <param name="diameter">
+		/// 円の直径
+		/// </param>
 		explicit Circle(const Line& diameter) noexcept
 			: Circle(diameter.begin, diameter.end) {}
 
+		/// <summary>
+		/// 円を作成します。
+		/// </summary>
+		/// <param name="_center">
+		/// 円の中心
+		/// </param>
+		/// <param name="p">
+		/// 円周上の点
+		/// </param>
 		Circle(Arg::center_<position_type> _center, const position_type& p) noexcept
 			: center(_center.value())
 			, r(p.distanceFrom(_center.value())) {}
@@ -277,21 +313,45 @@ namespace s3d
 			return setCenter(_center->x, _center->y);
 		}
 
+		/// <summary>
+		/// 円の座標を変更します。
+		/// </summary>
+		/// <param name="topLeft">
+		/// 円に外接する正方形の左上の座標
+		/// </param>
 		constexpr Circle& setPos(Arg::topLeft_<position_type> topLeft) noexcept
 		{
 			return setCenter(topLeft->x + r, topLeft->y + r);
 		}
 
+		/// <summary>
+		/// 円の座標を変更します。
+		/// </summary>
+		/// <param name="topRight">
+		/// 円に外接する正方形の右上の座標
+		/// </param>
 		constexpr Circle& setPos(Arg::topRight_<position_type> topRight) noexcept
 		{
 			return setCenter(topRight->x + r, topRight->y + r);
 		}
 
+		/// <summary>
+		/// 円の座標を変更します。
+		/// </summary>
+		/// <param name="bottomLeft">
+		/// 円に外接する正方形の左下の座標
+		/// </param>
 		constexpr Circle& setPos(Arg::bottomLeft_<position_type> bottomLeft) noexcept
 		{
 			return setCenter(bottomLeft->x + r, bottomLeft->y - r);
 		}
 
+		/// <summary>
+		/// 円の座標を変更します。
+		/// </summary>
+		/// <param name="bottomRight">
+		/// 円に外接する正方形の右下の座標
+		/// </param>
 		constexpr Circle& setPos(Arg::bottomRight_<position_type> bottomRight) noexcept
 		{
 			return setCenter(bottomRight->x - r, bottomRight->y - r);
@@ -334,6 +394,12 @@ namespace s3d
 		//	return Ellipse(center, r + _x, r + _y);
 		//}
 
+		/// <summary>
+		/// 半径を拡大した新しい円を返します。
+		/// </summary>
+		/// <param name="size">
+		/// 半径を拡大する倍率
+		/// </param>
 		constexpr Circle scaled(double s) const noexcept
 		{
 			return Circle(center, r * s);
@@ -344,36 +410,57 @@ namespace s3d
 		//	return Ellipse(center, r * sx, r * sy);
 		//}
 
+		/// <summary>
+		/// 円の上端を返します。
+		/// </summary>
 		constexpr position_type top() const noexcept
 		{
 			return{ center.x, center.y - r };
 		}
 
+		/// <summary>
+		/// 円の右端を返します。
+		/// </summary>
 		constexpr position_type right() const noexcept
 		{
 			return{ center.x + r, center.y };
 		}
 
+		/// <summary>
+		/// 円の下端を返します。
+		/// </summary>
 		constexpr position_type bottom() const noexcept
 		{
 			return{ center.x, center.y + r };
 		}
 
+		/// <summary>
+		/// 円の左端を返します。
+		/// </summary>
 		constexpr position_type left() const noexcept
 		{
 			return{ center.x - r, center.y };
 		}
 
+		/// <summary>
+		/// 円の左端と右端を結んだ直線を返します。
+		/// </summary>
 		constexpr Line lineDiameter() const noexcept
 		{
 			return{ left(), right() };
 		}
 
+		/// <summary>
+		/// 円の面積を返します。
+		/// </summary>
 		constexpr value_type area() const noexcept
 		{
 			return r * r * Math::Pi;
 		}
 
+		/// <summary>
+		/// 円の直径を返します。
+		/// </summary>
 		constexpr value_type perimeter() const noexcept
 		{
 			return 2 * r * Math::Pi;
