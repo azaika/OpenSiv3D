@@ -47,7 +47,7 @@ namespace s3d
 
 		virtual Optional<Rect> getViewport() const = 0;
 
-		virtual void addLine(const Float2& begin, const Float2& end, float thickness, const Float4(&colors)[2]) = 0;
+		virtual void addLine(LineStyle style, const Float2& begin, const Float2& end, float thickness, const Float4(&colors)[2]) = 0;
 
 		virtual void addTriangle(const Float2(&pts)[3], const Float4& color) = 0;
 
@@ -85,5 +85,7 @@ namespace s3d
 
 
 		virtual void addTextureRegion(const Texture& texture, const FloatRect& rect, const FloatRect& uv, const Float4& color) = 0;
+
+		virtual void addTexturedQuad(const Texture& texture, const FloatQuad& quad, const FloatRect& uv, const Float4& color) = 0;
 	};
 }
