@@ -1,20 +1,24 @@
-﻿
-# include <Siv3D.hpp>
+﻿# include <Siv3D.hpp>
 
 void Main()
 {
-	const Texture texture(L"example/windmill.png");
-
-	const LineString line
-	{
-		{ 50, 50 },{ 200, 200 },
-		{ 400, 200 },{ 100, 400 },
-		{ 500, 400 }
-	};
+	Graphics::SetTargetFrameRateHz(10);
+	RenderStateBlock2D rs(SamplerState::ClampNearest);
+	Image img(128, 96, Arg::generator = []() { return Color(Random(1), 0, 0); });
+	DynamicTexture tex;
 
 	while (System::Update())
 	{
-		// 線の幅 8 のスプライン曲線を描く
-		line.drawCatmullRom(8.0, Palette::White, true);
+		for (auto b : step(img.size()))
+		{
+			int32 s = 0;
+			for (auto d : step({ -1, -1 }, { 3, 3 }))
+				s += img.getPixel_Repeat(b + d).r;
+
+			img[b].b = (s == 3) || (img[b].r && s == 4);
+		}
+
+		tex.fill(img.forEach([](Color& p) { p.g = (p.r = p.b) ? 255 : 0; }));
+		tex.scale(5).draw();
 	}
 }

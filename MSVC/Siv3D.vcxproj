@@ -55,6 +55,7 @@
     <ClInclude Include="..\Siv3D\Include\Siv3D\Distribution.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\DragDrop.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Duration.hpp" />
+    <ClInclude Include="..\Siv3D\Include\Siv3D\DynamicTexture.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Easing.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\EasingController.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Ellipse.hpp" />
@@ -137,12 +138,14 @@
     <ClInclude Include="..\Siv3D\Include\Siv3D\RenderStateBlock2D.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\RenderTexture.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Resource.hpp" />
+    <ClInclude Include="..\Siv3D\Include\Siv3D\RoundRect.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\SamplerState.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Shader.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Shape2D.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\SIMDMath.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Spherical.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Spline.hpp" />
+    <ClInclude Include="..\Siv3D\Include\Siv3D\Sprite.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Step2D.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\Texture.hpp" />
     <ClInclude Include="..\Siv3D\Include\Siv3D\TexturedQuad.hpp" />
@@ -408,6 +411,7 @@
     <ClCompile Include="..\Siv3D\Source\Siv3D\BinaryWriter\CBinaryWriter_Windows.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\BinaryWriter\SivBinaryWriter.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\BlendState\SivBlendState.cpp" />
+    <ClCompile Include="..\Siv3D\Source\Siv3D\ByteArrayView\SivByteArrayView.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\ByteArray\CByteArray.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\ByteArray\SivByteArray.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\CharacterEncoding\SivCharacterEncoding.cpp" />
@@ -439,6 +443,7 @@
     <ClCompile Include="..\Siv3D\Source\Siv3D\DragDrop\CDragDrop_Windows.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\DragDrop\DragDropFactory.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\DragDrop\SivDragDrop.cpp" />
+    <ClCompile Include="..\Siv3D\Source\Siv3D\DynamicTexture\SivDynamicTexture.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\Ellipse\SivEllipse.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\EngineDirectory\EngineDirectory.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\FileSystem\SivFileSystem.cpp" />
@@ -524,6 +529,7 @@
     <ClCompile Include="..\Siv3D\Source\Siv3D\Renderer2D\Renderer2DFactory.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\RenderTexture\SivRenderTexture.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\Resource\SivResource.cpp" />
+    <ClCompile Include="..\Siv3D\Source\Siv3D\RoundRect\SivRoundRect.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\SamplerState\SivSamplerState.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\Shader\D3D11\CShader_D3D11.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\Shader\D3D11\PixelShader_D3D11.cpp" />
@@ -536,6 +542,7 @@
     <ClCompile Include="..\Siv3D\Source\Siv3D\Siv3DMain_Linux.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\Siv3DMain_macOS.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\Siv3DMain_Windows.cpp" />
+    <ClCompile Include="..\Siv3D\Source\Siv3D\Sprite\SivSprite.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\Stopwatch\SivStopwatch.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\String\SivString.cpp" />
     <ClCompile Include="..\Siv3D\Source\Siv3D\System\CSystem_Linux.cpp" />

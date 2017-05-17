@@ -41,6 +41,18 @@ namespace s3d
 
 	}
 
+	Texture::Texture(Dynamic, const uint32 width, const uint32 height, const void* pData, const uint32 stride, const TextureFormat format)
+		: m_handle(std::make_shared<TextureHandle>(Siv3DEngine::GetTexture()->createDynamic(Size(width, height), pData, stride, format)))
+	{
+		ASSET_CREATION();
+	}
+
+	Texture::Texture(Dynamic, const uint32 width, const uint32 height, const ColorF& color, const TextureFormat format)
+		: m_handle(std::make_shared<TextureHandle>(Siv3DEngine::GetTexture()->createDynamic(Size(width, height), color, format)))
+	{
+		ASSET_CREATION();
+	}
+
 	Texture::Texture(Render, const Size& size, const uint32 multisampleCount)
 		: m_handle(std::make_shared<TextureHandle>(Siv3DEngine::GetTexture()->createRT(size, multisampleCount)))
 	{
@@ -145,7 +157,7 @@ namespace s3d
 			*this,
 			FloatRect(x, y, x + size.x, y + size.y),
 			FloatRect(0.0f, 0.0f, 1.0f, 1.0f),
-			Float4(diffuse.r, diffuse.g, diffuse.b, diffuse.a)
+			diffuse.toFloat4()
 		);
 
 		return RectF(x, y, size);
@@ -161,7 +173,7 @@ namespace s3d
 			*this,
 			{ x - wHalf, y - hHalf, x + wHalf, y + hHalf },
 			{ 0.0f, 0.0f, 1.0f, 1.0f },
-			Float4(diffuse.r, diffuse.g, diffuse.b, diffuse.a)
+			diffuse.toFloat4()
 		);
 
 		return RectF(x - wHalf, y - hHalf, size);
